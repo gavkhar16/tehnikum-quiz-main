@@ -4,10 +4,10 @@ import { AppButton } from "../components/AppButton";
 import { AppContainer } from "../components/AppContainer";
 import { AppPassword } from "../components/AppPassword";
 
-const Registration = () => {
+ const Registration = () => {
     return(
             <div>
-                <Header headerText="Регистрация" />
+                <Header headerText="Регистрация"/>
                 <AppContainer labelText="Введите Email" />
                 <AppPassword passwordText="Введите пароль" />
                 <AppPassword passwordText="Введите ещё раз пароль" />
@@ -16,3 +16,4 @@ const Registration = () => {
     
     )
 }
+export default Registration;
