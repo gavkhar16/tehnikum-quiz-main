@@ -1,6 +1,5 @@
 import React from "react";
 import { Header } from "../components/Header";
-import { AppLabl } from "../components/AppLable";
 import { AppButton } from "../components/AppButton";
 import { AppContainer } from "../components/AppContainer";
 import { AppPassword } from "../components/AppPassword";
