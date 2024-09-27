@@ -1,6 +1,6 @@
 import React from "react";
 import { Header } from "../components/Header";
-import { AppLabl } from "../components/AppLable";
+import {AppLabel} from "../components/AppLabel"
 import { AppButton } from "../components/AppButton";
 
 const Welcome = () => {
@@ -8,10 +8,10 @@ const Welcome = () => {
     <div className="container">
       <div className="wrapper">
         <div className="welcome">
-          <Header headerText="Добро пожаловать в квиз от лучшего учебного центра"/>
+          <Header headerType="h1" headerText="Добро пожаловать в квиз от лучшего учебного центра" />
           <form className="welcome__form">
-            <AppLabl labelText="Ваше имя"/>
-            <AppLabl  labelText="Ваше номере телефона"/>
+            <AppLabel labelText="Ваше имя" errorText="Введите в правильном формате" id="username" isRequired inputPlaceholder="Имя" inputType="text"/>
+            <AppLabel  labelText="Ваше номере телефона" errorText="Введите номер в правильном формате" id="phone" hasError={true} isRequired={true} inputPlaceholder="+998 9- --- -- --" inputType="tel"/>
             {/* <label className="input-wrapper" htmlFor="username">
               Ваше имя
               <input
