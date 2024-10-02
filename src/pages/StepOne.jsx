@@ -7,15 +7,7 @@ const StepOne = () => {
   const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;
   const [answer, setAnswer] = useState("");
   const [clickkBtn, setClickkBtn] = useState(true);
-  const [answerError, setAnswerError] = useState(false);
-
-  const errorClick = () => {
-    if (!nameRegex.test(answer)) {
-      setAnswerError(true);
-    } else {
-      setAnswerError(false);
-    }
-  };
+  
 
   useEffect(() => {
     if (nameRegex.test(answer)) {
@@ -49,11 +41,9 @@ const StepOne = () => {
               isRequired
               id="answer"
               inputPlaceholder="Ваш ответ"
-              errorText="Введите правильно"
               inputType="text"
               labelValue={answer}
               labelChange={setAnswer}
-              hasError={answerError}
             />
             <AppButton
               buttonText="Далее"
