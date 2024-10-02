@@ -23,7 +23,7 @@ export const AppLabel = ({
         onChange={(e) => labelChange(e.target.value)}
         placeholder={inputPlaceholder}
       />
-      <span id="error-message">{errorText}</span>
+     
       {hasError && <span id="error-message">{errorText}</span>}
     </label>
   );

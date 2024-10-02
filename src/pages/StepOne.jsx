@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Header } from "../components/Header";
+import { AppLabel } from "../components/AppLabel";
+import { AppButton } from "../components/AppButton";
 
 const StepOne = () => {
+  const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;
+  const [answer, setAnswer] = useState("");
+  const [clickkBtn, setClickkBtn] = useState(true);
+  const [answerError, setAnswerError] = useState(false);
+
+  const errorClick = () => {
+    if (!nameRegex.test(answer)) {
+      setAnswerError(true);
+    } else {
+      setAnswerError(false);
+    }
+  };
+
+  useEffect(() => {
+    if (nameRegex.test(answer)) {
+      setClickkBtn(false); // Кнопка активна, если ввод корректен
+    } else {
+      setClickkBtn(true);  // Кнопка неактивна при ошибке
+    }
+  }, [answer]);
+
   return (
     <div className="container">
       <div className="wrapper">
@@ -20,21 +44,24 @@ const StepOne = () => {
             </div>
           </div>
           <div className="question">
-            <h2>1. Занимательный вопрос</h2>
-            <label className="input-wrapper">
-              <input
-                required
-                type="text"
-                name="answer"
-                placeholder="Ваш ответ"
-              />
-              <span id="error-message">
-                Введите номер в правильном формате например
-              </span>
-            </label>
-            <button type="button" disabled id="next-btn">
-              Далее
-            </button>
+            <Header headerType="h2" headerText="1. Занимательный вопрос" />
+            <AppLabel
+              isRequired
+              id="answer"
+              inputPlaceholder="Ваш ответ"
+              errorText="Введите правильно"
+              inputType="text"
+              labelValue={answer}
+              labelChange={setAnswer}
+              hasError={answerError}
+            />
+            <AppButton
+              buttonText="Далее"
+              isDisabled={clickkBtn}
+              id="next-btn"
+              buttonType="button"
+              buttonClick={errorClick}
+            />
           </div>
         </div>
       </div>

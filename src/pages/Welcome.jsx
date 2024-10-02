@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../components/Header";
 import { AppLabel } from "../components/AppLabel";
 import { AppButton } from "../components/AppButton";
 
 const Welcome = () => {
+  const phoneRegex =
+    /^\+?\d{1,4}?[\s-]?\(?\d{1,4}\)?[\s-]?\d{1,4}[\s-]?\d{1,4}[\s-]?\d{1,9}$/;
+  const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;
+  const [nameValue, setNameValue] = useState("");
+  const [phoneValue, setPhoneValue] = useState("");
+  const [checkBtn, setCheckBtn] = useState(true);
+  const [nameError, setNameError] = useState(false);
+  const [phoneError, setPhoneError] = useState(false);
+
+  const handleClick = () => {
+    if (!nameRegex.test(nameValue)) {
+      setNameError(true);
+    } else {
+      setNameError(false);
+    }
+    if (!phoneRegex.test(phoneValue)) {
+      setPhoneError(true);
+    } else {
+      setPhoneError(false);
+    }
+  };
+  useEffect(() => {
+    if (nameValue && phoneValue) {
+      setCheckBtn(false);
+    } else {
+      setCheckBtn(true);
+    }
+  }, [nameValue, phoneValue]);
   return (
     <div className="container">
       <div className="wrapper">
@@ -15,23 +43,31 @@ const Welcome = () => {
           <form className="welcome__form">
             <AppLabel
               labelText="Ваше имя"
-              hasError={true}
+              hasError={nameError}
               errorText="Введитеимя имя в правильном формате"
               id="username"
               isRequired
               inputPlaceholder="Имя"
               inputType="text"
+              labelValue={nameValue}
+              labelChange={setNameValue}
             />
             <AppLabel
               labelText="Ваш номере телефона"
               errorText="Введите номер в правильном формате"
               id="phone"
-              hasError={true}
+              hasError={phoneError}
               isRequired={true}
               inputPlaceholder="+998 9- --- -- --"
-              inputType="tel"
+              inputType="number"
+              labelValue={phoneValue}
+              labelChange={setPhoneValue}
             />
-            <AppButton buttonText="Далее" isDisabled={true }/>
+            <AppButton
+              buttonText="Далее"
+              isDisabled={checkBtn}
+              buttonClick={handleClick}
+            />
           </form>
         </div>
       </div>
