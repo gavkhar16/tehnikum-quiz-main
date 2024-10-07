@@ -11,7 +11,8 @@ export const AnswerLable = ({ answerLabel, id, labelChange, answerImg }) => {
         onChange={labelChange}
       />
       <label htmlFor={id}>
-        <img src={answerImg} alt={answerLabel} />
+        {/* Отображаем изображение только если оно передано */}
+        {answerImg && <img src={answerImg} alt={answerLabel} />} 
         <p>{answerLabel}</p>
       </label>
     </li>
