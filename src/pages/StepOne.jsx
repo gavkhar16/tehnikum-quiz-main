@@ -4,16 +4,24 @@ import { AppLabel } from "../components/AppLabel";
 import { AppButton } from "../components/AppButton";
 
 const StepOne = () => {
-  const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;
+  const nameRegex = /^[a-zA-Zа-яА-ЯёЁ]{1,20}$/;  
   const [answer, setAnswer] = useState("");
   const [clickkBtn, setClickkBtn] = useState(true);
   
+  // Определяем функцию errorClick
+  const errorClick = () => {
+    if (!nameRegex.test(answer)) {
+      alert("Ошибка: Введите корректный ответ");
+    } else {
+      alert("Ответ принят");
+    }
+  };
 
   useEffect(() => {
     if (nameRegex.test(answer)) {
-      setClickkBtn(false); // Кнопка активна, если ввод корректен
+      setClickkBtn(false); 
     } else {
-      setClickkBtn(true);  // Кнопка неактивна при ошибке
+      setClickkBtn(true);  
     }
   }, [answer]);
 
@@ -50,7 +58,7 @@ const StepOne = () => {
               isDisabled={clickkBtn}
               id="next-btn"
               buttonType="button"
-              buttonClick={errorClick}
+              buttonClick={errorClick} 
             />
           </div>
         </div>
