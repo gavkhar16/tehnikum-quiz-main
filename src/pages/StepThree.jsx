@@ -12,10 +12,10 @@ const StepThree = () => {
   };
 
   const answerOptions = [
-    { id: "variant-1", label: "Ваш ответ 1", img: "./img/laugh.png" },
-    { id: "variant-2", label: "Ваш ответ 2", img: "./img/hearts.png" },
-    { id: "variant-3", label: "Ваш ответ 3", img: "./img/smirk.png" },
-    { id: "variant-4", label: "Ваш ответ 4", img: "./img/fright.png" },
+    { id: "variant-1", label: "Смешно", img: "./img/laugh.png" },
+    { id: "variant-2", label: "Нравится", img: "./img/hearts.png" },
+    { id: "variant-3", label: "Даже незнаю", img: "./img/smirk.png" },
+    { id: "variant-4", label: "Восторге", img: "./img/fright.png" },
   ];
 
   return (
